@@ -18,11 +18,13 @@ public class Program {
 	
 	public static void main(String[] args) {
 		// TODO Calculate the in game currencies
+		
 		System.out.println("Welcome to Monumenta Calculator");
 		isRunning = true;
 		logger = new FileLogger(filename);
 		logger.Log(filename, "Opened Monumenta Calculator");
 		while (isRunning) {
+			HistoryWriter history = new HistoryWriter(name, amount, price, flatDiscount, percentDiscount);
 			System.out.println("Which choice do you want to pick");
 			System.out.println("1. Item Name");
 			System.out.println("2. Amount of Items");
@@ -71,20 +73,27 @@ public class Program {
 //					System.out.println("You have chose calculate in cxp/hxp");
 					logger.Log(filename, "You have chose to calculate in cxp/hxp");
 					calc.CalculateXP(name, amount, price, flatDiscount, percentDiscount);
+					history.AddToHistory();
 					logger.Log(filename, "Returning to main menu");
 					break;
 				case 6:
 //					System.out.println("You have chose calculate in ccs/hcs");
 					logger.Log(filename, "You have chose to calculate in ccs/hcs");
 					calc.CalculateCS(name, amount, price, flatDiscount, percentDiscount);
+					history.AddToHistory();
 					logger.Log(filename, "Returning to main menu");
 					break;
 				case 7:
 //					System.out.println("You have chose calculate in ar/har");
 					logger.Log(filename, "You have chose to calculate in ar/har");
 					calc.CalculateAR(name, amount, price, flatDiscount, percentDiscount);
+					history.AddToHistory();
 					logger.Log(filename, "Returning to main menu");
 					break;
+				case 8:
+					logger.Log(filename, "You have chose to recalculate from history");
+					calc.Recalculate();
+					logger.Log(filename, "Returning to main menu");
 				case 0:
 					isRunning = false;
 //					System.out.println("Quitting Application");

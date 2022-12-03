@@ -10,6 +10,12 @@ enum FlatorPercent {
 	Percent
 }
 
+enum Currencies {
+	Xp,
+	Cs,
+	Ar
+}
+
 
 
 public class Calculate {
@@ -161,6 +167,57 @@ public class Calculate {
 		}
 	}
 	
+	public void Recalculate() {
+		int choice = 0;
+		Currencies currencies;
+		String na = "";
+		int am = 0;
+		int pr = 0;
+		int flatDis = 0;
+		double percentDis = 0;
+		HistoryWriter historyReader = new HistoryWriter(na, am, pr, flatDis, percentDis);
+		HxpCxp xp = new HxpCxp(na, am, pr, flatDis, percentDis);
+		HcsCcs cs = new HcsCcs(na, am, pr, flatDis, percentDis);
+		HarAr ar = new HarAr(na, am, pr, flatDis, percentDis);
+		System.out.println("what numbers from 1 to the number of calculation you've done");
+		choice = (user.NextInt()) - 1;
+		System.out.println(choice);
+		logger.Log(filename, "num: " + choice);
+		na = historyReader.names.get(choice);
+		am = historyReader.amounts.get(choice);
+		pr = historyReader.prices.get(choice);
+		flatDis = historyReader.flatDiscounts.get(choice);
+		percentDis = historyReader.percentDiscounts.get(choice);
+		System.out.println("Which currencies are you using?");
+		currencies = CurrenciesOption();
+		if (currencies == Currencies.Xp) {
+			logger.Log(filename, "You have chose to use XP");
+			System.out.println("Recalculating");
+			logger.Log(filename, "Recalculating");
+			xp.calculateH();
+			xp.calculateC();
+			logger.Log(filename, "Recalculation Done");
+		} else if (currencies == Currencies.Cs) {
+			logger.Log(filename, "You have chose to use CS");
+			System.out.println("Recalculating");
+			logger.Log(filename, "Recalculating");
+			cs.calculateH();
+			cs.calculateC();
+			logger.Log(filename, "Recalculation Done");
+		} else if (currencies == Currencies.Ar) {
+			logger.Log(filename, "You have chose to use AR");
+			System.out.println("Recalculating");
+			logger.Log(filename, "Recalculating");
+			ar.calculateH();
+			ar.calculateC();
+			logger.Log(filename, "Recalculation Done");
+		} else {
+			System.out.println("Oh No! Something went wrong please try again");
+			logger.Error(filename, "Invalid Choice");
+		}
+		
+	}
+	
 	public int Discount(int amount, int price, int flatDiscount, double percentDiscount, FlatorPercent FlorPer) {
 		int discount = 0;
 		if (FlorPer == FlatorPercent.Flat) {
@@ -203,5 +260,29 @@ public class Calculate {
 			break;
 		}
 		return FlorPer;
+	}
+	
+	public Currencies CurrenciesOption() {
+		int choice;
+		Currencies currency = null;
+		System.out.println("1. XP");
+		System.out.println("2. CS");
+		System.out.println("3. AR");
+		choice = user.NextInt();
+		switch (choice) {
+		case 1:
+			currency = Currencies.Xp;
+			break;
+		case 2:
+			currency = Currencies.Cs;
+			break;
+		case 3:
+			currency = Currencies.Ar;
+			break;
+		default:
+			
+		}
+			
+		return currency;
 	}
 }
