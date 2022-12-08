@@ -12,3 +12,5 @@ Edit #1: I have updated this project to add a function to have history and recal
 Edit #2: I have updated this project once again.
 before I go on into the release date for posting into Monumenta Discord. Let me tell you that I have decided to replace the history with a currency exchange. If you wondering why I did that. Well, I realized that the history and recalculation was too complicated for me to do as of yet, so I decided to replace it with currency exchange, but don't worry about the history, I have separate the history stuff into a new folder called Stuff that will be there if something goes wrong and I need to take a look of it when I learn more about Java.
 now for the release date. I'll post it in Monumenta discord either on Wednesday after I'm done with my college or sometime this weekend. Most likely on Saturday, but who know. It could be earlier from saturday. It could be later than saturday, but no later than monday.
+
+I have released this project to Monumenta Discord Server. feel free to use it. if you want to use my code, ask me first beforehand.
