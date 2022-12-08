@@ -174,6 +174,7 @@ public class Calculate {
 		double com2;
 		double hyper;
 		System.out.println("How much compressed per hyper");
+		try {
 		com1 = user.NextInt();
 		logger.Log(filename, "Compressed per hyper: " + com1);
 		System.out.println("How much compressed it cost to exchange");
@@ -184,8 +185,15 @@ public class Calculate {
 		logger.Log(filename, "Hyper you want to exchange: " + hyper);
 		System.out.println("Calculating");
 		logger.Log(filename, "Calculating");
-		System.out.println("Currency Exchange: " + (hyper * com2) / com1);
+		System.out.println("Currency Exchange:");
+		System.out.println("hyper: " + (int) ((hyper * com2) / com1));
+		System.out.println("Compressed: " + (int) ((hyper * com2) % com1));
 		logger.Log(filename, "Calculation Done");
+		} catch (InputMismatchException e) {
+			System.out.println("Oh No! Something went wrong!");
+			logger.Log(filename, "Invalid Input");
+			user.NewLine();
+		}
 	}
 	
 //	public void Recalculate() {

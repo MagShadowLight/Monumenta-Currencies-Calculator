@@ -18,6 +18,8 @@ public class UserSetting {
 		String name = null;
 		System.out.println("Enter the item name");
 		name = user.NextString();
+		logger.Log(filename, "Name set. Name: " + name);
+		logger.Log(filename, "returning to main menu");
 		return name;
 	}
 	
@@ -27,6 +29,7 @@ public class UserSetting {
 		try {
 		amount = user.NextInt();
 		System.out.println("You want to buy " + amount + " " + name);
+		logger.Log(filename, "Amount set. Amount: " + amount);
 		logger.Log(filename, "returning to main menu");
 		return amount;
 		} catch (InputMismatchException e) {
@@ -65,12 +68,10 @@ public class UserSetting {
 			case 1:
 				logger.Log(filename, "You have chose to set flat discount");
 				SetFlatDiscount();
-				logger.Log(filename, "Discount set. Flat Discount: " + pro.flatDiscount + " percent discount: " + pro.percentDiscount);
 				break;
 			case 2:
 				logger.Log(filename, "You have chose to set percentage discount");
 				SetPercentDiscount();
-				logger.Log(filename, "Discount set. Flat Discount: " + pro.flatDiscount + " percent discount: " + pro.percentDiscount);
 				break;
 			default:
 				System.out.println("Oh No! Something went wrong. Please try again");
@@ -90,6 +91,7 @@ public class UserSetting {
 		try {
 		discount = user.NextInt();
 		System.out.println("Discount for " + pro.name + ": " + discount);
+		logger.Log(filename, "Discount set. Flat Discount: " + pro.flatDiscount + " percent discount: " + pro.percentDiscount);
 		pro.flatDiscount = discount;
 		} catch (InputMismatchException e) {
 			System.out.println("Oh No! Something went wrong!");
@@ -104,6 +106,7 @@ public class UserSetting {
 		try {
 		discount = user.NextDouble();
 		System.out.println("Percentage discount for " + pro.name + ": " + discount);
+		logger.Log(filename, "Discount set. Flat Discount: " + pro.flatDiscount + " percent discount: " + pro.percentDiscount);
 		pro.percentDiscount = discount;
 		} catch (InputMismatchException e) {
 			System.out.println("Oh No! Something went wrong!");

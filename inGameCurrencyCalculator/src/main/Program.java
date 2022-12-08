@@ -1,3 +1,6 @@
+
+
+
 package main;
 
 import java.util.InputMismatchException;
@@ -19,8 +22,6 @@ public class Program {
 	
 	
 	public static void main(String[] args) {
-		// TODO Calculate the in game currencies
-		
 		System.out.println("Welcome to Monumenta Calculator");
 		isRunning = true;
 		logger = new FileLogger(filename);
@@ -111,23 +112,4 @@ public class Program {
 		}
 		logger.Log(filename, "Good bye!");
 	}
-				
-				
-		// TODO have the user input the item they want
-		
-		// TODO have user input the amount of item and prices
-		
-		// TODO have user input the amount of discount in flat value
-		
-		// TODO have user input the amount of discount in percentage
-		
-		// TODO Calculate the cxp/hxp
-		
-		// TODO Calculate the ccs/hcs
-		
-		// TODO Calculate the ar/har
-		
-		// TODO use file loggers
-	
-		// TODO use history calculation array
 }
